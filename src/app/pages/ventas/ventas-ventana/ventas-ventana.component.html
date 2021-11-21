@@ -1,0 +1,62 @@
+<app-window [title]="title" [url]="url" [(editando)]="editando" [(nuevo)]="nuevo" [(form)]="formGroup" 
+    [(object)]="object" [(modificado)]="modificado" [model]="model" [name]="name" [service]="service"
+    [titleField]="titleField">
+    <form [formGroup]="formGroup">
+        <p-tabView>
+            <p-tabPanel header="General">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <app-text-input [control]="formGroup.controls.id" label="ID" [readonly]="true" placeholder=""></app-text-input>
+                    </div>
+                    <div class="col-lg-3">
+                        <app-date-input [control]="formGroup.controls.fecha" label="Fecha" placeholder=""
+                            [readonly]="!editando"></app-date-input>
+                    </div>
+                    <div class="col-lg-5">
+                        <app-text-input [control]="formGroup.controls.numero_factura" label="Nro. Factura" placeholder=""
+                            [readonly]="!editando"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <app-number-input [control]="formGroup.controls.total" label="Total" placeholder=""
+                            [readonly]="true"></app-number-input>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-11">
+                        <p-fieldset legend="Cliente">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                    <app-reference-input [control]="formGroup.controls.cliente_ruc" label="RUC"
+                                        [clase]="clienteModel" (paste)="pasteCliente($event)" idField="ruc"
+                                        [service]="clienteService" name="Cliente" [readonly]="!editando"
+                                        placeholder=""></app-reference-input>
+                                </div>
+                                <div class="col-sm-12 col-md-8 col-lg-8">
+                                    <app-text-input [control]="formGroup.controls.cliente_nombre" label="Nombre" [readonly]="true"
+                                        placeholder=""></app-text-input>
+                                </div>
+                            </div>
+                        </p-fieldset>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <app-detail-table 
+                [source]="detalle.controls"
+                [columns]="detalleColumns" 
+                (create)="crearDetalle()" 
+                (clickRow)="editarDetalle($event)"
+                (delete)="deleteDetalle($event)"
+                [formArray]="detalle"
+                [readonly]="!editando"></app-detail-table>
+        </p-tabView>
+    </form>
+</app-window>
+<app-modal-venta-detalle
+    [(display)]="displayDetalle" 
+    [form]="detalleForm" 
+    [formArray]="detalle"
+    [nuevo]="detalleNuevo"
+    (confirmChanges)="confirmarDetalle($event)" 
+></app-modal-venta-detalle>

@@ -1,0 +1,25 @@
+<app-window [title]="title" [url]="url" [(editando)]="editando" [(nuevo)]="nuevo" [(form)]="formGroup" 
+    [(object)]="object" [(modificado)]="modificado" [model]="model" [name]="name" [service]="service"
+    [titleField]="titleField">
+    <form [formGroup]="formGroup">
+        <p-tabView>
+            <p-tabPanel header="General">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <app-text-input [control]="formGroup.controls.id" label="ID" [readonly]="true" placeholder=""></app-text-input>
+                    </div>
+                    <div class="col-lg-6">
+                        <app-text-input [control]="formGroup.controls.ruc" label="RUC" placeholder=""
+                            [readonly]="!editando"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <app-text-input [control]="formGroup.controls.nombre_apellido" label="Nombre" placeholder=""
+                            [readonly]="!editando"></app-text-input>
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+    </form>
+</app-window>

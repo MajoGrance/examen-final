@@ -1,0 +1,6 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="layout-content" [style.left.rem]="windowWidth < breakpoint? sidebarCloseWidth : sidebarWidth"
+    (click)="closeSidebar()">
+    <ng-content select="router-outlet"></ng-content>
+</div>

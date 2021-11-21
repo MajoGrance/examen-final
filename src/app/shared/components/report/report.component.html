@@ -1,0 +1,76 @@
+<div class="mb-7 animate__animated animate__fadeIn">
+    <p-card class="crud-card filtros">
+        <div class="card-title shadow-5 d-flex align-items-center">
+            <i class="material-icons-outlined pr-2 mod-icon">filter_alt</i> Filtros
+        </div>
+        <div class="p-card-body pb-0">
+            <ng-content select="form"></ng-content>
+        </div>
+        <button pButton icon="pi pi-check" label="Ejecutar" class="p-button-sm p-button-success mr-1 mt-3"
+            (click)="onRun()"></button>
+    </p-card>
+    <p-card styleClass="mt-2">
+        <p-table #dt [value]="source" [columns]="columns" [responsive]="true" sortMode="multiple"
+            styleClass="p-datatable-sm p-datatable-responsive p-datatable-gridlines p-datatable-striped"
+            [autoLayout]="true" class="table">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th [pSortableColumn]="col.field" *ngFor="let col of columns">
+                        {{col.header}}<p-sortIcon [field]="col.field" pTooltip="CTRL + CLICK"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row>
+                <tr class="animate__animated animate__fadeIn animate__faster">
+                    <td *ngFor="let col of columns" class="c-pointer">
+                        <span class="d-flex justify-content-between w-100">
+                            <span class="p-column-title">{{col.header}}</span>
+                            <span *ngIf="col.type ==='text' || col.type === 'id'">
+                                <span *ngIf="col.refField && col.refName">{{row[col.refName]?row[col.refName][col.refField]:''}}</span>
+                                <span *ngIf="!col.refField || !col.refName">{{row[col.field]}}</span>
+                            </span>
+                            <span *ngIf="col.type ==='option'">
+                                <span class="option" *ngIf="col.refField && col.refName">
+                                    {{col.labels?col.labels[row[col.refName]?row[col.refName][col.refField]:'']:''}}</span>
+                                <span class="option" *ngIf="!col.refField || !col.refName">
+                                    {{col.labels?col.labels[row[col.field]]:''}}</span>
+                            </span>
+                            <span *ngIf="col.type ==='numeric'">
+                                <span *ngIf="col.refField && col.refName">{{row[col.refName]?row[col.refName][col.refField]:''| currency: '': '': '0.0-6': 'es-AR'}}</span>
+                                <span *ngIf="!col.refField || !col.refName">{{row[col.field] | currency: '': '': '0.0-6': 'es-AR' }}</span>
+                            </span>
+                            <span *ngIf="col.type ==='boolean'" [class.text-center]="innerWidth>=641" [class.w-100]="innerWidth>=641">
+                                <span *ngIf="row[col.field] === true">
+                                    <mat-icon class="material-icons-outlined check-icon">check_circle</mat-icon>
+                                </span>
+                                <span *ngIf="row[col.field] !== true">
+                                    <mat-icon class="material-icons-outlined cancel-icon">cancel</mat-icon>
+                                </span>
+                            </span>
+                            <span *ngIf="col.type ==='list'" class="text-right" [class.text-center]="innerWidth>=641" [class.w-100]="innerWidth>=641">
+                                <div class="mr-1 mb-1" style="display: inline-flex;" *ngFor="let permiso of row[col.field]">
+                                    <p-tag [value]="permiso"></p-tag>
+                                </div>
+                            </span>
+                            <span *ngIf="col.type ==='date'">
+                                <span *ngIf="col.refField && col.refName">{{row[col.refName]?row[col.refName][col.refField]:'' | date: 'dd/MM/yyyy'}}</span>
+                                <span *ngIf="!col.refField || !col.refName">{{row[col.field] | date: 'dd/MM/yyyy'}}</span>
+                            </span>
+                        </span>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr class="animate__animated animate__fadeIn animate__faster">
+                    <td [attr.colspan]="columns.length + 1" class="text-center">
+                        <div class="container">
+                            <br>
+                            <img class="no-data-img mt-3 mb-3" src="./assets/images/empty-box.svg"><br>
+                            No se encontraron datos.<br><br>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-card>
+</div>

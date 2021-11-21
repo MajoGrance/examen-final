@@ -1,0 +1,98 @@
+<p-dialog [header]="'Seleccionar ' + name" [visible]="display" (visibleChange)="setDisplay($event)" [modal]="true"
+    styleClass="dialog" appendTo="body" [style]="{'max-width': '80%', 'min-width': '22rem'}"
+    [draggable]="false" [resizable]="false" class="paste-dialog">
+    <p-table #dt [value]="clonedSource" [rows]="10" [columns]="columns" [paginator]="true" [dataKey]="dataKey" [responsive]="true"
+        sortMode="multiple" [autoLayout]="true" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+        styleClass="p-datatable-sm p-datatable-responsive p-datatable-gridlines p-datatable-striped" [rowHover]="true"
+        [showCurrentPageReport]="true"  class="table" responsiveLayout="scroll">
+        <ng-template pTemplate="caption">
+            <div [class.d-flex]="innerWidth > 641" [class.justify-content-between]="innerWidth > 641">
+                <button pButton label="Borrar" class="p-button-outlined mb-2" icon="pi pi-filter-slash"
+                    (click)="clear(filterInput, dt)"></button>
+                <span class="p-input-icon-left p-ml-auto mb-2">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" #filterInput
+                        (input)="filterGlobal($event, dt)" placeholder="Buscar" 
+                    />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}} <p-sortIcon [field]="col.field" pTooltip="CTRL + CLICK" tooltipPosition="bottom">
+                    </p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row let-columns="columns">
+            <tr class="table-row" (click)="onSelectRow(row)">
+                <td *ngFor="let col of columns">
+                    <span class="d-flex justify-content-between">
+                        <span class="p-column-title">{{col.header}}</span>
+                        <span *ngIf="col.type ==='text' || col.type === 'id' || col.type === 'option'">
+                            <span>{{row[col.field]}}</span>
+                        </span>
+                        <span *ngIf="col.type ==='numeric'">
+                            <span>{{row[col.field] | currency: '': '': '0.0-6': 'es-AR' }}</span>
+                        </span>
+                        <span *ngIf="col.type ==='boolean'" [class.text-center]="innerWidth>=641" [class.w-100]="innerWidth>=641">
+                            <span *ngIf="row[col.field] === true">
+                                <mat-icon class="material-icons-outlined check-icon">check_circle</mat-icon>
+                            </span>
+                            <span *ngIf="row[col.field] !== true">
+                                <mat-icon class="material-icons-outlined cancel-icon">cancel</mat-icon>
+                            </span>
+                        </span>
+                        <span *ngIf="col.type ==='list'" class="text-right" [class.text-center]="innerWidth>=641" [class.w-100]="innerWidth>=641">
+                            <div class="mr-1 mb-1" style="display: inline-flex;" *ngFor="let permiso of row[col.field]">
+                                <p-tag [value]="permiso"></p-tag>
+                            </div>
+                        </span>
+                        <span *ngIf="col.type ==='date'">
+                            <span>{{row[col.field] | date: 'dd/MM/yyyy'}}</span>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td [attr.colspan]="columns.length" class="text-center">
+                    <br>
+                    <img class="no-data-img mt-3 mb-3" src="./assets/images/empty-box.svg"><br>
+                    No se encontraron datos.<br><br>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <!-- <p-orderList [value]="filteredSource?filteredSource:items" [listStyle]="{'max-height':'60vh'}"
+        filterPlaceholder="Buscar {{name}}..." [dragdrop]="false" class="lista" (selectionChange)="onSelectRow($event)">
+        <ng-template let-row pTemplate="item">
+            <div class="lista-item w-100 h-100">
+                <div class="product-list-detail">
+                    <div class="d-flex justify-content-between">
+                        <div class="item-name mb-2"><strong>{{row.nombre}}</strong></div>
+                        <p-tag *ngIf="row.topRight">{{row.topRight}}</p-tag>
+                    </div>
+                    <span *ngFor="let desc of row.descripcion" class="d-flex w-100 align-items-center">
+                        <i class="material-icons-outlined pr-2">{{desc.icono}}</i>
+                        <span class="product-category">{{desc.texto}}</span>
+                    </span>
+                </div>
+                <div class="d-flex w-100 justify-content-between pt-1 pb-1">
+                    <p-tag severity="warning" *ngIf="row.subtexto">{{row.subtexto}}</p-tag>
+                    <p-tag *ngIf="row.etiqueta">{{row.etiqueta}}</p-tag>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="empty">
+            <div class="container w-100 text-center d-block">
+                <img class="no-data-img mt-3 mb-3" src="./assets/images/empty-box.svg">
+                <div class="container w-100">
+                    No se encontraron datos.<br><br>
+                </div>
+            </div>
+        </ng-template>
+    </p-orderList> -->
+</p-dialog>

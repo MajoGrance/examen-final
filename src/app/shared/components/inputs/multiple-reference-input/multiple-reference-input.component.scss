@@ -1,0 +1,43 @@
+.left-icon {
+    color: var(--yellow-200);
+}
+.form-control-icon-left {
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+}
+.control-padding {
+    padding-bottom: 20px!important;
+}
+.invalid-feedback {
+    font-size: 0.65rem!important;
+}
+.multiselect-input-disabled {
+    ::ng-deep .p-multiselect {
+        background: var(--bs-gray-200)!important;
+    }
+}
+.multiselect-input {
+    ::ng-deep .p-multiselect {
+        // background: $light-color-400!important;
+        height: 2.2rem!important;
+        border: 1px solid #ced4da;
+        background: white;
+    }
+    ::ng-deep .p-multiselect .p-multiselect-label {
+        padding-top: 0.2rem;
+    }
+    ::ng-deep .p-multiselect-items-wrapper {
+        z-index: 4;
+    }
+    ::ng-deep .p-multiselect-token {
+        font-size: 0.8rem!important;
+    }
+}
+.form-control {
+    height: 2.2rem!important;
+}
+.label {
+    font-size: 1rem;
+    color: var(--surface-400);
+    font-weight: 300;
+}

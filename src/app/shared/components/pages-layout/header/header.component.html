@@ -1,0 +1,22 @@
+<nav class="header d-flex justify-content-between align-items-center">
+    <span class="d-flex justify-content-center align-items-center">
+        <div class="sidebar-toggle">
+            <span class="material-icons-outlined animate__animated animate__fadeIn animate__faster" *ngIf="!sidebar.open" (click)="toggleSidebar()">
+                menu
+            </span>
+            <span class="material-icons-outlined animate__animated animate__fadeIn animate__faster" *ngIf="sidebar.open" (click)="toggleSidebar()">
+                menu_open
+            </span>
+        </div>
+        <div class="brand-name">
+            Ventas
+        </div>
+    </span>
+    <span>
+        <div class="avatar d-flex justify-content-center align-items-center" (click)="menu.toggle($event)">
+            {{ userInitial }}
+        </div>
+        <p-menu #menu [popup]="true" [model]="userItems" styleClass="mt-3 ml-0" appendTo="body"></p-menu>
+    </span>
+</nav>
+<p-progressBar *ngIf="loading" class="fixed-progress" mode="indeterminate" [style]="{'height': '5px'}"></p-progressBar>

@@ -1,0 +1,64 @@
+::ng-deep .p-datatable .p-sortable-column .p-sortable-column-badge {
+    background-color: var(--surface-300);
+}
+::ng-deep .p-fieldset .p-fieldset-legend {
+    margin-top: -1rem;
+}
+::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    color: #333333!important;
+}
+::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    color: white!important;
+}
+::ng-deep .p-inputswitch .p-inputswitch-slider {
+    border-radius: 20px;
+}
+::ng-deep .p-inputswitch .p-inputswitch-slider:before {
+    border-radius: 20px;
+}
+::ng-deep legend {
+    margin-left: 0.7rem!important;
+    margin-bottom: 0;
+    width: auto!important;
+    font-size: 1.1rem!important;
+    text-decoration: none;
+    padding: 0.5rem!important;
+}
+::ng-deep .p-fieldset.p-fieldset-toggleable .p-fieldset-legend a{
+    padding: 0.5rem!important;
+}
+::ng-deep .p-fieldset {
+    margin-top: 1.5rem;
+}
+::ng-deep .p-fieldset .p-fieldset-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+::ng-deep .p-card-header {
+    .card-header {
+        background-color: white!important;
+        color:var(--surface-400);
+        font-weight: bold;
+    }
+}
+::ng-deep .p-card-body {
+    padding-bottom: 0.7rem!important;
+}
+::ng-deep .p-card-footer {
+    .card-footer {
+        background-color: white!important;
+        font-size: 0.8rem;
+        padding-bottom: 0;
+    }
+}
+::ng-deep .p-steps .p-steps-item.p-highlight .p-steps-number {
+    background: var(--primary-color);
+    color: wheat;
+}
+::ng-deep .p-steps {
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+}
+::ng-deep .p-toast {
+    z-index: 30000!important;
+}

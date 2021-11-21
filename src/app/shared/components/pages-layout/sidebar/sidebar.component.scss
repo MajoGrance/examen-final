@@ -1,0 +1,52 @@
+@import '../../../../../material.scss';
+.sidebar {
+    background-color: rgb(1, 18, 37);
+    color: white;
+    position: fixed;
+    top: 4rem;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+    background-image: url('../../../../../assets/images/sidebar.svg');
+    background-position: left;
+    background-repeat:no-repeat;
+    background-size: cover;
+    transition: width .1s ease;
+}
+.item {
+    white-space: nowrap;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    .item-icon {
+        display: inline-flex;
+        align-items: center;
+        width: 3.5rem;
+        height: 3rem;
+    
+        .material-icons-outlined {
+            width: 3.5rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+    }
+
+    .item-label {
+        font-size: 1.1rem;
+        width: 14rem;
+        // border-bottom: 1px solid rgb(199, 199, 199);
+        padding: 0.85rem
+    }
+}
+.item:hover {
+    background-color: rgba(153, 172, 194, 0.438);
+    cursor: pointer;
+}
+.active-item {
+    border-left: 4px solid var(--cyan-400);
+    color: var(--cyan-400);
+}

@@ -1,0 +1,34 @@
+<app-report [source]="source" [columns]="columns" (run)=run()>
+    <form>
+        <div class="row">
+            <div class="col-lg-5">
+                <p-fieldset legend="Periodo">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <app-date-input [control]="form.controls.desde_fecha" label="Desde"></app-date-input>
+                        </div>
+                        <div class="col-md-6">
+                            <app-date-input [control]="form.controls.hasta_fecha"label="Hasta"></app-date-input>
+                        </div>
+                    </div>
+                </p-fieldset>
+            </div>
+            <div class="col-lg-7">
+                <p-fieldset legend="Producto">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                            <app-reference-input [control]="form.controls.producto_codigo" label="Código"
+                                [clase]="productoModel" (paste)="pasteProducto($event)" idField="codigo"
+                                [service]="productoService" name="Producto"
+                                placeholder=""></app-reference-input>
+                        </div>
+                        <div class="col-sm-12 col-md-8 col-lg-8">
+                            <app-text-input [control]="form.controls.producto_nombre" label="Nombre" [readonly]="true"
+                                placeholder=""></app-text-input>
+                        </div>
+                    </div>
+                </p-fieldset>
+            </div>
+        </div>
+    </form>
+</app-report>

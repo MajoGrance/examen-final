@@ -1,0 +1,12 @@
+.layout-content {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    top: 4rem;
+    overflow: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+    transition: left .1s ease;
+    background: rgb(221, 221, 221);
+}

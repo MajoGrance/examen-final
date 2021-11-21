@@ -1,0 +1,48 @@
+@import '../../../../../material.scss';
+.brand-name {
+    padding-left: 0.6rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.header {
+    height: 4rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    background: map-get($primary, 700);
+    padding: 0.45rem;
+    color: white;
+}
+.sidebar-toggle {
+    border-right: 1px solid rgb(230, 230, 230);
+    padding-top: 0.2rem;
+    .material-icons-outlined  {
+        font-size: 2.5rem!important;
+        cursor: pointer;
+        padding-right: 0.45rem;
+    }
+}
+.avatar {
+    background: map-get($accent, 400);
+    height: 2.7rem;
+    width: 2.7rem;
+    border-radius: 100%;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.fixed-progress {
+    ::ng-deep .p-progressbar-indeterminate .p-progressbar-value:after {
+        background-color: var(--yellow-500)!important;
+    }
+    ::ng-deep .p-progressbar-indeterminate .p-progressbar-value:before {
+        background-color: var(--yellow-500)!important;
+    }
+    ::ng-deep .p-progressbar-indeterminate {
+        position: fixed;
+        z-index: 1;
+        top: 4rem;
+        right: 0;
+        left: 0;
+    }
+}

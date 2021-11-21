@@ -1,0 +1,35 @@
+<app-window [title]="title" [url]="url" [(editando)]="editando" [(nuevo)]="nuevo" [(form)]="formGroup" 
+    [(object)]="object" [(modificado)]="modificado" [model]="model" [name]="name" [service]="service"
+    [titleField]="titleField">
+    <form [formGroup]="formGroup">
+        <p-tabView>
+            <p-tabPanel header="General">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <app-text-input [control]="formGroup.controls.id" label="ID" [readonly]="true" placeholder=""></app-text-input>
+                    </div>
+                    <div class="col-lg-6">
+                        <app-text-input [control]="formGroup.controls.codigo" label="Código" placeholder=""
+                            [readonly]="!editando"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <app-text-input [control]="formGroup.controls.nombre" label="Nombre" placeholder=""
+                            [readonly]="!editando"></app-text-input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <app-number-input [control]="formGroup.controls.precio_venta" label="Precio Venta"
+                            [readonly]="!editando" placeholder="" [maxFractionDigits]="0"></app-number-input>
+                    </div>
+                    <div class="col-lg-5">
+                        <app-number-input [control]="formGroup.controls.existencia" label="Existencia" placeholder=""
+                            [readonly]="!editando"></app-number-input>
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+    </form>
+</app-window>

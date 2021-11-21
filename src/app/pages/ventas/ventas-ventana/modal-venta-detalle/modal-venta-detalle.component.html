@@ -1,0 +1,36 @@
+<p-dialog header="Detalle de Venta" [visible]="display" (visibleChange)="setDisplay($event)" [modal]="true" [style]="{width: '38rem'}"
+    [draggable]="false" [resizable]="false" class="modal-detalle" [focusTrap]="true" appendTo="body">
+    <ng-template pTemplate="body">
+        <form [formGroup]="formCopy">
+            <p-fieldset legend="Producto" styleClass="mb-2">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <app-reference-input [control]="formCopy.controls.producto_codigo" label="Código"
+                            [clase]="productoModel" idField="codigo" (paste)="pasteProducto($event)"
+                            [service]="productoService" name="Producto"
+                            placeholder=""></app-reference-input>
+                    </div>
+                    <div class="col-sm-12 col-md-8 col-lg-8">
+                        <app-text-input [control]="formCopy.controls.producto_nombre" label="Nombre" [readonly]="true"
+                            placeholder=""></app-text-input>
+                    </div>
+                </div>
+            </p-fieldset>
+            <div class="row">
+                <div class="col-lg-6">
+                    <app-number-input [control]="formCopy.controls.cantidad" label="Cantidad"
+                        placeholder="" [maxFractionDigits]="0" (changeValue)="sumUp()"></app-number-input>
+                </div>
+                <div class="col-lg-6">
+                    <app-number-input [control]="formCopy.controls.total" label="Total"
+                        placeholder="" [maxFractionDigits]="0" [readonly]="true"></app-number-input>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="footer">
+            <p-button icon="pi pi-check" (click)="confirm()" label="Confirmar" styleClass="p-button-success"></p-button>
+        </div>
+    </ng-template>
+</p-dialog>

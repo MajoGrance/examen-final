@@ -1,0 +1,12 @@
+<div class="sidebar shadow-3" [style.width.rem]="sidebarWidth">
+    <div class="item" *ngFor="let item of items" (click)="navigate(item.link)" [class.active-item]="isActive(item.link)">
+        <div class="item-icon">
+            <span class="material-icons-outlined">
+                {{item.icon}}
+            </span>
+        </div>
+        <span class="item-label">
+            {{item.label}}
+        </span>
+    </div>
+</div>
