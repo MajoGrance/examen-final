@@ -1,27 +1,42 @@
-# ExamenFinal
+# Examen Front End 2021 - FPUNA
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
 
-## Development server
+# Integrantes
+- María José Grance
+- Sebastián Rojas
+- Carlos Ruiz
+- Paola Olmedo
+- Luiz Pérez
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Librerias instaladas
+jquery<br>
+popper.js<br>
+bootstrap<br>
+primeng<br>
+primeicons<br>
+@ngx-translate<br>
+primeflex<br>
+@angular/cdk<br>
+material-icons<br>
+xlsx<br>
+jspdf<br>
+jspdf-autotable<br>
+inputmask<br>
+@types/inputmask<br>
 
-## Code scaffolding
+## Instalar paquetes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Ejecutar `npm install` para instalar todas las dependencias necesarias para ejecutar el proyecto.
 
-## Build
+## Desplegar servidor de desarrollo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Ejecutar `ng serve` para un servidor de pruebas en el directorio raíz del proyecto. Navega a `http://localhost:4200/`. La app recargará automáticamente cuando se realice un cambio en los archivos.
 
-## Running unit tests
+## Compilar
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ejecutar `ng build` para compilar el proyecto. Los archivos generados se encontrarán en el directorio `dist/`. 
 
-## Running end-to-end tests
+## Ayuda adicional
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para obtener ayuda con Angular CLI usa `ng help` o ve a la página [Angular CLI Overview and Command Reference](https://angular.io/cli).
