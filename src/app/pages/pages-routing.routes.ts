@@ -12,11 +12,13 @@ import { ReporteResumidoComponent } from './reporte-resumido/reporte-resumido.co
 import { ReporteDetalladoComponent } from './reporte-detallado/reporte-detallado.component';
 import { MessageService } from '../services/utils/message.service';
 import { WindowGuard } from '../guards/window.guard';
+import { PagesGuard } from '../guards/pages.guard';
 
 const routes: Routes = [
     {
         path: '',
         component: PagesComponent,
+        canActivate: [PagesGuard],
         children: [
             { path: 'home', component: HomeComponent },
             { path: 'productos', component: ProductosListaComponent },

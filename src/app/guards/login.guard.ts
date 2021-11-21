@@ -6,7 +6,8 @@ import { AuthService } from '../services/utils/auth.service';
 @Injectable({
     providedIn: 'root'
 })
-export class PagesGuard implements CanActivate {
+export class LoginGuard implements CanActivate {
+    
     constructor(
         private authService: AuthService,
         private router: Router
@@ -16,10 +17,11 @@ export class PagesGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         const user = this.authService.getCurrentUser();
-        if (!user) {    
-            this.router.navigate(['/auth/login']);
+        if (user) {
+            this.router.navigate(['/sitio/clientes']);
             return false;
         }
         return true;
     }
+  
 }
