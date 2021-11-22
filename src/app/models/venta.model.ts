@@ -3,6 +3,8 @@ import { IBase, BaseModel } from './base.model';
 import { ICliente } from './cliente.model';
 import { IProducto } from './producto.model';
 import { noCeroValidator } from '../shared/validators';
+import { VentaService } from '../services/abm/venta.service';
+import { ServiceResponse } from '../shared/interfaces';
 
 const fb = new FormBuilder();
 export interface IVenta extends IBase {
@@ -62,5 +64,22 @@ export class VentaModel extends BaseModel implements IVenta {
             total: [detalle?.total, Validators.required]
         });
         return form;
+    }
+
+    async delete(service: VentaService): Promise<ServiceResponse> {
+        if (service && service.delete) {
+            await service.onDelete(this.serialize());
+            const resp = await service.delete(this.id);
+            if (resp.ok) {
+                this.id = resp.resp.id;
+            }
+            return resp;
+        } else {
+            return {
+                ok: false,
+                msg: 'Servicio con errores o no proveído',
+                resp: 'Provea el servicio para eliminar y verifique que este implemente el método delete'
+            };
+        }
     }
 }

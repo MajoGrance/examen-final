@@ -166,7 +166,6 @@ export class DetailTableComponent implements OnInit, OnChanges {
     }
 
     onDelete(dt: any): void {
-        console.log('asdf')
         for (const form of this.selectedRows) {
             const idx = this.formArray.controls.findIndex(c => c === form);
             if (idx > -1) {

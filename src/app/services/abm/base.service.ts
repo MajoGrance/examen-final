@@ -5,6 +5,7 @@ import { IProducto } from '../../models/producto.model';
 import { IVenta } from '../../models/venta.model';
 import { ServiceResponse } from '../../shared/interfaces';
 import { AppStorageService } from '../utils/app-storage.service';
+import { ProductoService } from './producto.service';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,7 @@ export class BaseService {
     url = '';
 
     constructor(
-        private storage: AppStorageService
+        public storage: AppStorageService,
     ) { }
 
     async get(id: number): Promise<ServiceResponse> {
