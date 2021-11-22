@@ -68,7 +68,6 @@ export class VentaModel extends BaseModel implements IVenta {
 
     async delete(service: VentaService): Promise<ServiceResponse> {
         if (service && service.delete) {
-            await service.onDelete(this.serialize());
             const resp = await service.delete(this.id);
             if (resp.ok) {
                 this.id = resp.resp.id;
